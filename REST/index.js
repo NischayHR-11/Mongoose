@@ -4,11 +4,14 @@ const port=8080;
 const path=require("path");
 const mongoose=require("mongoose");
 const Chat= require("./models/chats.js");
+const method=require("method-override");
 
 
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"/views"));
 app.use(express.static(path.join(__dirname,"/public")));
+app.use(express.urlencoded({extended:true}));
+app.use(method('_method'));
 
 main().then((res)=>{
     console.log("connected...");
@@ -36,7 +39,21 @@ app.get("/chats",async(req,res)=>{
 
 
     let chats=await Chat.find();
-    console.log(chats);
 
     res.render("chats.ejs",{chats});
 });
+
+app.get("/chats/:id/edit",(req,res)=>{
+
+    let {id}=req.params;
+
+    res.render("edit.ejs",{id});
+})
+
+app.patch("/chats/:id",async(req,res)=>{
+
+    let{id}=req.params;
+    let {msg}=req.body;
+    await Chat.findByIdAndUpdate(id,{msg:msg});
+    res.redirect("/chats")
+})
