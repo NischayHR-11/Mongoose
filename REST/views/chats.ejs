@@ -26,7 +26,10 @@
             
         </div>
         <br>
-        <p><b>To : <%=chat.to%></b></p><br>
+        <p><b>To : <%=chat.to%></b></p>
+        <hr>
+        <p><%=chat.createdAt.toString().split(" ")[4].split(":").slice(0,2).join(":")%></p>
+        <p><%=chat.createdAt.toString().split(" ").slice(0,4).join(" ")%></p>
         <form method="post" action="/chats/<%=chat._id %>?_method=DELETE">
             <button class="but">Delete</button>
         </form>
