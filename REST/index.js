@@ -56,4 +56,17 @@ app.patch("/chats/:id",async(req,res)=>{
     let {msg}=req.body;
     await Chat.findByIdAndUpdate(id,{msg:msg});
     res.redirect("/chats")
+});
+
+app.get("/chats/new",(req,res)=>{
+
+    res.render("new.ejs");
+});
+
+app.post("/chats",async(req,res)=>{
+
+    let {from,to,msg}=req.body;
+
+    await Chat.insertMany([{from,to,msg}]);
+    res.redirect("/chats");
 })
