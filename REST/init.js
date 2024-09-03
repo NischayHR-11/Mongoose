@@ -14,12 +14,12 @@ async function main() {
 
 Chat.insertMany([
     {
-        from:"Nishay",
+        from:"Nischay",
         to:"Mahadev",
         msg:"HELLO MAHADEV !!"
     },
     {
-        from:"Nishay",
+        from:"Nischay",
         to:"Vaibhav",
         msg:"HELLO VAIBHAV !!"
     },
