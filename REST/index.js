@@ -69,4 +69,12 @@ app.post("/chats",async(req,res)=>{
 
     await Chat.insertMany([{from,to,msg}]);
     res.redirect("/chats");
+});
+
+app.delete("/chats/:id",async(req,res)=>{
+
+    let {id}=req.params;
+
+    await Chat.findByIdAndDelete(id);
+    res.redirect("/chats");
 })
