@@ -1,4 +1,5 @@
 const mongoose=require("mongoose");
+const Chat= require("./models/chats.js");
 
 main().then((res)=>{
     console.log("connected...");
@@ -11,32 +12,29 @@ async function main() {
     await mongoose.connect("mongodb://127.0.0.1:27017/whatsapp");
 }
 
-
-const chatschema=mongoose.Schema({
-
-    from:{
-
-        type:String,
-        return:true,
+Chat.insertMany([
+    {
+        from:"Nishay",
+        to:"Mahadev",
+        msg:"HELLO MAHADEV !!"
     },
-    to:{
-
-        type:String,
-        return:true,
+    {
+        from:"Nishay",
+        to:"Vaibhav",
+        msg:"HELLO VAIBHAV !!"
     },
-    msg:{
-
-        type:String,
+    {
+        from:"Vaibhav",
+        to:"Mahadev",
+        msg:"HELLO MAHADEV !!"
     },
-    // createdAt:{
-
-    //     type:Date,
-    //     return:true,
-    // },
-
+    {
+        from:"Mahadev",
+        to:"Vaibhav",
+        msg:"HELLO VAIBHAV !!"
+    }
+]).then((res)=>{
+    console.log(res);
+}).catch((err)=>{
+    console.lof(err);
 });
-
-
-const Chat = mongoose.model("Chat",chatschema);
-
-exports.model=Chat;
