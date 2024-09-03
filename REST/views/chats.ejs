@@ -26,7 +26,11 @@
             
         </div>
         <br>
-        <p><b>To : <%=chat.to%></b></p>
+        <p><b>To : <%=chat.to%></b></p><br>
+        <form method="post" action="/chats/<%=chat._id %>?_method=DELETE">
+            <button class="but">Delete</button>
+        </form>
+        
     </div>
     <br><br>
     <%}%>
