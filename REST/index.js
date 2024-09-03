@@ -66,8 +66,8 @@ app.get("/chats/new",(req,res)=>{
 app.post("/chats",async(req,res)=>{
 
     let {from,to,msg}=req.body;
-
-    await Chat.insertMany([{from,to,msg}]);
+    let createdAt=new Date;
+    await Chat.insertMany([{from,to,msg,createdAt}]);
     res.redirect("/chats");
 });
 
