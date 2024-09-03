@@ -17,11 +17,11 @@ const chatschema= new mongoose.Schema({
 
         type:String,
     },
-    // createdAt:{
+    createdAt:{
 
-    //     type:Date,
-    //     return:true,
-    // },
+        type:Date,
+        return:true,
+    },
 
 });
 
