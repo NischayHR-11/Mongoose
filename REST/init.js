@@ -16,22 +16,26 @@ Chat.insertMany([
     {
         from:"Nischay",
         to:"Mahadev",
-        msg:"HELLO MAHADEV !!"
+        msg:"HELLO MAHADEV !!",
+        createdAt:new Date,
     },
     {
         from:"Nischay",
         to:"Vaibhav",
-        msg:"HELLO VAIBHAV !!"
+        msg:"HELLO VAIBHAV !!",
+        createdAt:new Date,
     },
     {
         from:"Vaibhav",
         to:"Mahadev",
-        msg:"HELLO MAHADEV !!"
+        msg:"HELLO MAHADEV !!",
+        createdAt:new Date,
     },
     {
         from:"Mahadev",
         to:"Vaibhav",
-        msg:"HELLO VAIBHAV !!"
+        msg:"HELLO VAIBHAV !!",
+        createdAt:new Date,
     }
 ]).then((res)=>{
     console.log(res);
