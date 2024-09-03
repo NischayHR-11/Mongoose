@@ -67,7 +67,7 @@ app.post("/chats",async(req,res)=>{
 
     let {from,to,msg}=req.body;
     let createdAt=new Date;
-    await Chat.insertMany([{from,to,msg,createdAt}]);
+    await Chat.insertMany([{from,to,msg,createdAt}]); // instances sent should always match with instances of DataBase.
     res.redirect("/chats");
 });
 
