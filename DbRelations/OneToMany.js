@@ -29,7 +29,7 @@ const userschema=new mongoose.Schema({
     orders:[
         {
             type:mongoose.Schema.Types.ObjectId,                   // stores only refernce ID.
-            ref:"order"
+            ref:"order"                                            // reference model(collection name (singular)).
             
         }
     ]
@@ -71,4 +71,35 @@ async function find() {
 
 find();
 
-// One To Many (parent refernce inside child).    {terms of lakhs}
+// One To Many (parent refernce inside child).    {terms of lakhs}  {Their can be several post fior single user}
+
+
+const postschema =new mongoose.Schema({
+
+    content:String,
+    likes:Number,
+    followers:Number,
+    user:{
+
+        type : mongoose.Schema.Types.ObjectId,
+        ref:"zomatouser"
+    }
+});
+
+const post= mongoose.model("post",postschema);
+
+
+async function add3(){
+
+    const curuser=await zomatouser.findOne({name:"nischay"});
+    
+    const post1= await post.create({content:"DSA",likes:1000000000,followers:1000000000000,user:curuser});
+
+    console.log(await post.findOne({content:"DSA"}).populate("user","name"));   // only username is printed with id.
+
+    const post2= await post.create({content:"fullStack Web Development",likes:1000000000,followers:1000000000000,user:curuser});
+    console.log(await post.findOne({content:"fullStack Web Development"}).populate("user"));
+}
+
+add3();
+
